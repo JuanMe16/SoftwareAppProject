@@ -7,7 +7,53 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Dashboard</ion-title>
+      <ion-title size="large">Panel</ion-title>
     </ion-toolbar>
+    <ion-card class="ion-justify-content-center">
+      <ion-chip (click)="changeDashboardOption('overview')">Solicitar</ion-chip>
+      <ion-chip (click)="changeDashboardOption('students')">Estudiantes</ion-chip>
+      <ion-chip (click)="signOut()">Salir</ion-chip>
+    </ion-card>
   </ion-header>
+  <ion-card *ngIf="dashboardOption === 'overview'">
+    <ion-radio-group [(ngModel)]="choosedCarril">
+      <ion-item>
+        <ion-radio value="1">Carril 1</ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-radio value="2">Carril 2</ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-radio value="3">Carril 3</ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <ion-button (click)="publishStudents()" expand="block">Solicitar Estudiantes</ion-button>
+    <ion-button (click)="confirmStudents()" expand="block" color="warning">Los estudiantes han llegado.</ion-button>
+  </ion-card>
+  <ion-card *ngIf="dashboardOption === 'students'">
+    <ion-card>
+      <ion-input [(ngModel)]="studentSign.name">Nombre estudiante</ion-input>
+      <ion-radio-group [(ngModel)]="studentSign.type">
+        <ion-item>
+          <ion-radio value="Preescolar">Preescolar</ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-radio value="Primaria">Primaria</ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-radio value="Bachillerato">Bachillerato</ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-card>
+    <ion-button expand="block" (click)="saveStudent()">Añadir</ion-button>
+    <ion-card *ngFor="let studentExample of foundStudents">
+      <ion-card-header>
+        <ion-label>
+          <h2>{{studentExample.name}}</h2>
+          <p>{{studentExample.type}}</p>
+        </ion-label>
+      </ion-card-header>
+      <ion-button (click)="deleteStudent(studentExample)" expand="block" color="danger">Eliminar</ion-button>
+    </ion-card>
+  </ion-card>
 </ion-content>
