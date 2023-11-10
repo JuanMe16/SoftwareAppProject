@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Authentication</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title *ngIf="!authType" size="large">Inicia Sesión</ion-title>
+      <ion-title *ngIf="authType" size="large">Registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-content *ngIf="!authType">
+      <ion-input [(ngModel)]="signInCredentials.dni">Cedula</ion-input>
+      <ion-input [(ngModel)]="signInCredentials.password">Contraseña</ion-input>
+    </ion-card-content>
+    <ion-card-content *ngIf="authType">
+      <ion-input [(ngModel)]="signUpCredentials.firstName">Primer nombre</ion-input>
+      <ion-input [(ngModel)]="signUpCredentials.lastName">Ultimo nombre</ion-input>
+      <ion-input [(ngModel)]="signUpCredentials.dni">Cedula</ion-input>
+      <ion-input [(ngModel)]="signUpCredentials.password">Contraseña</ion-input>
+    </ion-card-content>
+    <ion-button expand="block" color="success" (click)="sendForm()">Enviar</ion-button>
+    <ion-button expand="block" color="warning" *ngIf="!authType" (click)="changeRegisterType()">¿No tienes una cuenta?</ion-button>
+    <ion-button expand="block" color="warning" *ngIf="authType" (click)="changeRegisterType()">¿Ya tienes una cuenta? </ion-button>
+  </ion-card>
+</ion-content>
