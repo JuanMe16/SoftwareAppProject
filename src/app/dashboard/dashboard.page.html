@@ -9,14 +9,12 @@
     <ion-toolbar>
       <ion-title size="large">Panel</ion-title>
     </ion-toolbar>
-    <ion-card class="ion-justify-content-center">
-      <ion-chip (click)="changeDashboardOption('overview')">Solicitar</ion-chip>
-      <ion-chip (click)="changeDashboardOption('students')">Estudiantes</ion-chip>
-      <ion-chip (click)="signOut()">Salir</ion-chip>
-    </ion-card>
   </ion-header>
+  <ion-button (click)="changeDashboardOption('overview')">Solicitar</ion-button>
+  <ion-button (click)="changeDashboardOption('students')">Estudiantes</ion-button>
+  <ion-button (click)="signOut()">Salir</ion-button>
   <ion-card *ngIf="dashboardOption === 'overview'">
-    <ion-radio-group [(ngModel)]="choosedCarril">
+    <ion-radio-group *ngIf="!sentStudents" [(ngModel)]="choosedCarril">
       <ion-item>
         <ion-radio value="1">Carril 1</ion-radio>
       </ion-item>
@@ -27,8 +25,8 @@
         <ion-radio value="3">Carril 3</ion-radio>
       </ion-item>
     </ion-radio-group>
-    <ion-button (click)="publishStudents()" expand="block">Solicitar Estudiantes</ion-button>
-    <ion-button (click)="confirmStudents()" expand="block" color="warning">Los estudiantes han llegado.</ion-button>
+    <ion-button *ngIf="!sentStudents" (click)="publishStudents()" expand="block">Solicitar Estudiantes</ion-button>
+    <ion-button *ngIf="sentStudents" (click)="confirmStudents()" expand="block" color="warning">Los estudiantes han llegado.</ion-button>
   </ion-card>
   <ion-card *ngIf="dashboardOption === 'students'">
     <ion-card>

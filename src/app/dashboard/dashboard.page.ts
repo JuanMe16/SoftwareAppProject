@@ -13,6 +13,7 @@ export class DashboardPage implements OnInit {
   dashboardOption = 'overview';
   choosedCarril = '1';
   studentSign = { name: '', type: 'Preescolar' };
+  sentStudents = false;
   foundStudents: Student[] = [];
 
   constructor(
@@ -28,6 +29,10 @@ export class DashboardPage implements OnInit {
 
   async ngOnInit() {
     await this.loadStudents();
+    const uploadedStudents = await this.dashboardService.isPublished();
+    if (uploadedStudents[0]) {
+      this.sentStudents = true;
+    }
   }
 
   changeDashboardOption(option: 'overview' | 'students') {
@@ -41,6 +46,7 @@ export class DashboardPage implements OnInit {
 
   confirmStudents() {
     this.dashboardService.confirmStudents();
+    this.sentStudents = false;
   }
 
   async publishStudents() {
@@ -49,6 +55,7 @@ export class DashboardPage implements OnInit {
       message: 'Se ha enviado la información al colegio!',
       duration: 3000
     });
+    this.sentStudents = true;
     publishedMessage.present();
   }
 

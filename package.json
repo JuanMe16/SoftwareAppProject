@@ -10,7 +10,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "build:android": "ionic capacitor build android",
+    "build:android": "ionic capacitor build android --watch",
     "open:android": "ionic capacitor open android",
     "run:android": "ionic capacitor run android"
   },
