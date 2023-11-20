@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Authentication</ion-title>
+    <ion-title>Inicio De Sistema</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,16 +14,18 @@
   <ion-card>
     <ion-card-content *ngIf="!authType">
       <ion-input [(ngModel)]="signInCredentials.dni">Cedula</ion-input>
-      <ion-input [(ngModel)]="signInCredentials.password">Contraseña</ion-input>
+      <ion-input [(ngModel)]="signInCredentials.password" type="password">Contraseña</ion-input>
     </ion-card-content>
     <ion-card-content *ngIf="authType">
-      <ion-input [(ngModel)]="signUpCredentials.firstName">Primer nombre</ion-input>
-      <ion-input [(ngModel)]="signUpCredentials.lastName">Ultimo nombre</ion-input>
+      <ion-input [(ngModel)]="signUpCredentials.firstName">Nombre</ion-input>
+      <ion-input [(ngModel)]="signUpCredentials.lastName">Apellido</ion-input>
       <ion-input [(ngModel)]="signUpCredentials.dni">Cedula</ion-input>
-      <ion-input [(ngModel)]="signUpCredentials.password">Contraseña</ion-input>
+      <ion-input [(ngModel)]="signUpCredentials.password" type="password">Contraseña</ion-input>
     </ion-card-content>
     <ion-button expand="block" color="success" (click)="sendForm()">Enviar</ion-button>
-    <ion-button expand="block" color="warning" *ngIf="!authType" (click)="changeRegisterType()">¿No tienes una cuenta?</ion-button>
-    <ion-button expand="block" color="warning" *ngIf="authType" (click)="changeRegisterType()">¿Ya tienes una cuenta? </ion-button>
+    <ion-button expand="block" color="warning" *ngIf="!authType" (click)="changeRegisterType()">¿No tienes una
+      cuenta?</ion-button>
+    <ion-button expand="block" color="warning" *ngIf="authType" (click)="changeRegisterType()">¿Ya tienes una cuenta?
+    </ion-button>
   </ion-card>
 </ion-content>

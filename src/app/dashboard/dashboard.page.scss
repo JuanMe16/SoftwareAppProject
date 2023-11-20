@@ -1,0 +1,72 @@
+ion-title {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: rgb(226, 211, 74);
+}
+
+ion-button {
+  background: linear-gradient(to right, #6dd5ed);
+  color: white;
+  border-radius: 2px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+ion-button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+ion-card {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+ion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.solicitar-btn {
+  --background: #4caf50;
+  --color: white;
+}
+
+.estudiantes-btn {
+  --background: #2196f3;
+  --color: white;
+}
+
+.salir-btn {
+  --background: #f44336;
+  --color: white;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+ion-input {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --border-radius: 8px;
+  --border-color: #dcdcdc;
+  --placeholder-color: #9e9e9e;
+  --placeholder-font-style: italic;
+  --placeholder-font-size: 1rem;
+}
+
+ion-input:focus {
+  --border-color: #3880ff; /* Cambia el color cuando está enfocado */
+}
+
+ion-label {
+  --color: #333;
+  --font-size: 1rem;
+}

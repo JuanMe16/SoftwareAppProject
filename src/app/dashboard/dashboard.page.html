@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Dashboard</ion-title>
+    <ion-title>Sistema de Padres</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,9 +10,11 @@
       <ion-title size="large">Panel</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-button (click)="changeDashboardOption('overview')">Solicitar</ion-button>
-  <ion-button (click)="changeDashboardOption('students')">Estudiantes</ion-button>
-  <ion-button (click)="signOut()">Salir</ion-button>
+  <div class="button-container">
+    <ion-button class="solicitar-btn" (click)="changeDashboardOption('overview')">Solicitar</ion-button>
+    <ion-button class="estudiantes-btn" (click)="changeDashboardOption('students')">Estudiantes</ion-button>
+    <ion-button class="salir-btn" (click)="signOut()">Salir</ion-button>
+  </div>
   <ion-card *ngIf="dashboardOption === 'overview'">
     <ion-radio-group *ngIf="!sentStudents" [(ngModel)]="choosedCarril">
       <ion-item>
@@ -26,11 +28,15 @@
       </ion-item>
     </ion-radio-group>
     <ion-button *ngIf="!sentStudents" (click)="publishStudents()" expand="block">Solicitar Estudiantes</ion-button>
-    <ion-button *ngIf="sentStudents" (click)="confirmStudents()" expand="block" color="warning">Los estudiantes han llegado.</ion-button>
+    <ion-button *ngIf="sentStudents" (click)="confirmStudents()" expand="block" color="warning">Los estudiantes han
+      llegado.</ion-button>
   </ion-card>
   <ion-card *ngIf="dashboardOption === 'students'">
     <ion-card>
-      <ion-input [(ngModel)]="studentSign.name">Nombre estudiante</ion-input>
+      <ion-item>
+        <ion-label position="floating">Nombre de estudiante</ion-label>
+        <ion-input type="text" [(ngModel)]="studentSign.name" placeholder="Ingresa el nombre"></ion-input>
+      </ion-item>
       <ion-radio-group [(ngModel)]="studentSign.type">
         <ion-item>
           <ion-radio value="Preescolar">Preescolar</ion-radio>
